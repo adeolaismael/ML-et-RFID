@@ -1,0 +1,339 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    
+}
+
+<head>
+    <meta charset="UTF-8">
+    
+   
+    <link rel="stylesheet" type="text/css" href="~/Comparaison().css">
+    
+    
+</head>
+
+<body>
+    <header>
+
+        <nav class="navbar">
+            <ul>
+                <li> <h1 class="nomdusite"><strong>RFID WEBSITE </strong></h1> </li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <p> <br><br><br></p>
+
+    <div class="text-center">
+        <h1 class="display-4"><u>Welcome</u></h1>
+        <p> <br><br></p>
+
+        <h2> <strong>Veuillez faire votre choix<br>pour procéder à la comparaison</strong></h2>
+        <p> <br><br> </p>
+
+
+        <form asp-action="Graph" method="post">
+
+            <span class="animation-text">
+                <input type="checkbox" name="methode1" id="methodeAnalytique" value="0" onclick="updateMethode1(this.checked)">
+                <strong> Méthode analytique</strong> <br>  <br>
+            </span>
+
+
+
+            <span class="animation-text">
+                <input type="checkbox" name="methode2" id="RF" value="0" onclick="toggleHyperparameters('method2-hyperparameters'); updateMethode2(this.checked)"><strong>Random forest</strong><br>  <br>
+            </span>
+            <div id="method2-hyperparameters" style="display: none;">
+                <div id="method2-hyperparameters">
+                    <label for="hyperparameter1"><strong> <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre n_estimators spécifie le nombre d'arbres dans la forêt du modèle. La valeur par défaut de ce paramètre est 10, ce qui signifie que 10 arbres de décision différents seront construits dans la forêt aléatoire"> <span class="animation-text"> <h5>n_estimators</h5> </span> </span></strong> </label>
+                    <input type="range" id="rangeInput6" name="hyperparameter1" min="50" max="200" value="50">
+                    <p id="selectedValue6">50</p>
+                    <p> <br> </p>
+
+
+                    <label for="hyperparameter2"> <strong><span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="max depth est le nombre de divisions que chaque arbre de décision est autorisé à effectuer. Si le nombre de divisions est trop faible, le modèle sous-apprend les données, et s'il est trop élevé, le modèle surapprend"> <span class="animation-text"><h5>max_depth </h5> </span> </span> </strong> </label>
+                    <input type="range" id="rangeInput7" name="hyperparameter2" min="5" max="15" value="5">
+                    <p id="selectedValue7">5</p>
+                    <p><br></p>
+                </div>
+
+            </div>
+
+
+            <span class="animation-text">
+                <input type="checkbox" name="methode3" id="LR" value="0" onclick="toggleHyperparameters('method3-hyperparameters'); updateMethode3(this.checked)"><strong>Logistic Regression</strong><br> <br>
+            </span>
+            <div id="method3-hyperparameters" style="display: none;">
+                <div id="method3-hyperparameters">
+                    <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Un paramètre de réglage (λ), parfois appelé paramètre de pénalité, contrôle la force du terme de pénalité dans la régression ridge et la régression lasso. Il s'agit essentiellement de la quantité de rétrécissement, où les valeurs des données sont rétrécies vers un point central, comme la moyenne"> <span class="animation-text">  <h5>Penalty</h5> </span> </span>
+                    <select name="selectedItem1">
+
+                        <option value="l1">l1</option>
+                        <option value="l2">l2</option>
+                        <option value="elasticnet">elasticnet</option>
+                        <option value="none">none</option>
+                    </select>
+
+                    <p> <br><br> </p>
+
+
+                    <label for="hyperparameter3"> <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre C est inversement proportionnel à la force de régularisation appliquée au modèle. La régularisation vise à prévenir le surajustement (overfitting) en pénalisant les coefficients de régression pour éviter qu'ils prennent des valeurs trop grandes. Le paramètre C contrôle l'inverse de cette pénalité, où une valeur plus élevée de C correspond à une régularisation plus faible, permettant aux coefficients d'avoir des valeurs plus importantes"> <span class="animation-text"><h5>C</h5> </span> </span>  </label>
+                    <p> <br> </p>
+                    <input type="range" id="rangeInput" name="hyperparameter3" min="0.01" max="10" step="0.01" value="0.01">
+                    <p id="selectedValue">0.01</p>
+                    <p> <br> </p>
+
+                    <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le solveur est un ensemble d'algorithmes utilisés pour prendre des décisions. Les algorithmes du solveur se composent de générateurs et de chercheurs. Les générateurs produisent des décisions potentielles, puis les chercheurs les examinent pour trouver la meilleure décision dans le délai imparti">
+                        <span class="animation-text"> <h5>Solver</h5> </span>
+                    </span>
+                    <select name="selectedItem2">
+                        <option value="newton-cg">newton-cg</option>
+                        <option value="lbfgs">lbfgs</option>
+                        <option value="liblinear">liblinear </option>
+                        <option value="sag">sag</option>
+                        <option value="saga">saga</option>
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+
+
+            <span class="animation-text">
+                <input type="checkbox" name="methode4" id="SVC" value="0" onclick="toggleHyperparameters('method4-hyperparameters'); updateMethode4(this.checked)"><strong>SVM</strong><br> <br>
+            </span>
+            <div id="method4-hyperparameters" style="display: none;">
+                <div id="method4-hyperparameters">
+                    <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le noyau (kernel) dans les machines à vecteurs de support (SVM) est une fonction mathématique qui transforme les données d'entrée dans un espace de dimension supérieure, permettant ainsi de trouver une frontière de décision non linéaire">
+                        <span class="animation-text"> <h5>Kernel</h5> </span>
+                    </span>
+                    <select name="selectedItem3">
+                        <option value="linear">linear</option>
+                        <option value="poly">poly</option>
+                        <option value="rbf">rbf</option>
+                        <option value="sigmoid">sigmoid</option>
+                    </select>
+                    <p> <br><br> </p>
+
+                    <label for="hyperparameter4">  <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre de régularisation (C) : Il nous indique dans quelle mesure nous souhaitons éviter la classification erronée"> <span class="animation-text"><h5>C</h5> </span> </span></label>
+                    <p> <br> </p>
+                    <input type="range" id="rangeInput1" name="hyperparameter4" min="0.01" max="10" step="0.01" value="0.01">
+                    <p id="selectedValue1">0.01</p>
+
+                    <p> <br><br> </p>
+
+
+                    <label for="hyperparameter5"> <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre gamma définit à quel point l'influence d'un seul exemple d'entraînement est importante. Cela signifie que si gamma est élevé, on considérera seulement les points proches de l'hyperplan sinon on considérera les points à plus grande distance"><span class="animation-text"><h5>Gamma</h5> </span>  </span> </label>
+                    <p> <br> </p>
+                    <input type="range" id="rangeInput2" name="hyperparameter5" min="0.01" max="10" step="0.01" value="0.01">
+                    <p id="selectedValue2">0.01</p>
+
+                    <p> <br><br></p>
+
+                    <label for="hyperparameter6"><span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre degree est utilisé lorsque le noyau est défini sur 'poly' (polynomial). Il représente essentiellement le degré du polynôme utilisé pour trouver l'hyperplan qui divise les données"> <span class="animation-text"><h5>Degré</h5> </span></span></label>
+                    <p> <br> </p>
+                    <input type="range" id="rangeInput3" name="hyperparameter6" min="1" max="3" value="1">
+                    <p id="selectedValue3">1</p>
+                    <p> <br><br></p>
+
+                    <label for="hyperparameter7">
+                        <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="coef0 dans les machines à vecteurs de support (SVM) est un paramètre utilisé dans certains noyaux, tels que le noyau polynomial et le noyau sigmoïde. Il définit la contribution de l'influence des termes d'interaction de degré supérieur dans la fonction de décision.Plus précisément, il contrôle l'importance relative des termes de degré supérieur par rapport aux termes de degré inférieur dans la fonction de décision"> <span class="animation-text"><h5>Coef</h5> </span></span>
+                    </label>
+                    <p> <br> </p>
+                    <input type="range" id="rangeInput4" name="hyperparameter7" min="-1" max="1" value="-1">
+                    <p id="selectedValue4">-1</p>
+                    <p> <br><br></p>
+
+                    <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre de tolérance dans les machines à vecteurs de support (SVM) est un paramètre qui contrôle la tolérance acceptable pour la convergence de l'algorithme d'optimisation. Il détermine la précision à laquelle l'optimisation doit être effectuée avant de considérer qu'elle a convergé vers une solution acceptable">
+                        <span class="animation-text"><h5>Tolérance</h5> </span>
+                    </span>
+                    <select name="selectedItem4">
+                        <option value="1e-3">1e-3</option>
+                        <option value="1e-4">1e-4</option>
+                        <option value="1e-5">1e-5</option>
+                    </select>
+                </div>
+
+            </div>
+
+
+
+
+
+            <span class="animation-text">
+                <input type="checkbox" name="methode5" id="KNN" value="0" onclick="toggleHyperparameters('method5-hyperparameters'); updateMethode5(this.checked)"><strong>K Nearest Neighbor</strong><br> <br>
+            </span>
+            <div id="method5-hyperparameters" style="display: none;">
+                <div id="method5-hyperparameters">
+                    <label for="hyperparameter8"> <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre n_neighbors (nombre de voisins) dans l'algorithme des k plus proches voisins (KNN) est un paramètre qui spécifie le nombre de voisins les plus proches à considérer lors de la classification ou de la prédiction d'une nouvelle observation"><span class="animation-text"><h5>N_neighbors</h5></span>  </span> </label> <p> <br> </p>
+                    <input type="range" id="rangeInput5" name="hyperparameter8" min="1" max="10" value="50">
+                    <p id="selectedValue5">1</p>
+                    <p> <br><br> </p>
+
+                    <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre metric (métrique) dans l'algorithme KNN est un paramètre qui spécifie la mesure de distance utilisée pour calculer la similarité entre les observations lors de la recherche des voisins les plus proches">
+                        <span class="animation-text"><h5>Metric</h5> </span>
+                    </span>
+                    <select name="selectedItem5">
+                        <option value="euclidean">euclidean</option>
+                        <option value="manhattan">manhattan</option>
+                        <option value="chebyshev">chebyshev</option>
+
+                    </select>
+                    <p> <br><br> </p>
+
+                    <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre weights dans l'algorithme KNN est un paramètre qui spécifie comment les voisins sont pris en compte lors du calcul de la prédiction pour une nouvelle observation.Il existe généralement deux options pour le paramètre weights : uniform et distance">
+                        <span class="animation-text"><h5>Weights</h5> </span>
+                    </span>
+                    <select name="selectedItem6">
+                        <option value="uniform">uniform</option>
+                        <option value="distance">distance</option>
+
+                    </select>
+                    <p> <br><br> </p>
+
+                    <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre algorithm dans l'algorithme KNN est un paramètre qui spécifie l'algorithme utilisé pour trouver les k voisins les plus proches d'une nouvelle observation.Il existe généralement deux options courantes pour le paramètre algorithm : Brute-force et Ball Tree ou KD Tree ">
+                        <span class="animation-text"><h5>Algorithm</h5> </span>
+                    </span>
+                    <select name="selectedItem7">
+                        <option value="auto">auto</option>
+                        <option value="brute">brute</option>
+                        <option value="kd_tree">kd_tree</option>
+                        <option value="ball_tree">ball_tree</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <br>
+
+
+
+
+
+
+
+
+
+
+            <div class="btn">
+                <button class="dropbtn" type="submit" onclick="window.location.href='@Url.Action("Comparegraph", "Home")'">Comparer</button>
+            </div>
+
+        </form>
+
+        <p><br><br><br></p>
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        function toggleHyperparameters(hyperparametersId) {
+            $("#" + hyperparametersId).toggle();
+
+        }
+
+        function updateMethode1(checked) {
+            var methodValue = checked ? "1" : "0";
+            // Utilisez la variable methodValue selon vos besoins
+            document.getElementById("methodeAnalytique").value = methodValue;
+            
+        }
+        function updateMethode2(checked) {
+            var methodValue = checked ? "1" : "0";
+            // Utilisez la variable methodValue selon vos besoins
+            document.getElementById("RF").value = methodValue;
+
+        }
+        function updateMethode3(checked) {
+            var methodValue = checked ? "1" : "0";
+            // Utilisez la variable methodValue selon vos besoins
+            document.getElementById("LR").value = methodValue;
+
+        }
+        function updateMethode4(checked) {
+            var methodValue = checked ? "1" : "0";
+            // Utilisez la variable methodValue selon vos besoins
+            document.getElementById("SVC").value = methodValue;
+
+        }
+        function updateMethode5(checked) {
+            var methodValue = checked ? "1" : "0";
+            // Utilisez la variable methodValue selon vos besoins
+            document.getElementById("KNN").value = methodValue;
+
+        }
+    </script>
+
+    <script>
+        const rangeInput = document.getElementById('rangeInput');
+        const selectedValue = document.getElementById('selectedValue');
+
+        rangeInput.addEventListener('input', () => {
+            selectedValue.textContent = rangeInput.value;
+        });
+
+
+
+    </script>
+    <script>
+        const rangeInput1 = document.getElementById('rangeInput1');
+        const rangeInput2 = document.getElementById('rangeInput2');
+        const rangeInput3 = document.getElementById('rangeInput3');
+        const rangeInput4 = document.getElementById('rangeInput4');
+        const selectedValue1 = document.getElementById('selectedValue1');
+        const selectedValue2 = document.getElementById('selectedValue2');
+        const selectedValue3 = document.getElementById('selectedValue3');
+        const selectedValue4 = document.getElementById('selectedValue4');
+
+        rangeInput1.addEventListener('input', () => {
+            selectedValue1.textContent = rangeInput1.value;
+        });
+        rangeInput2.addEventListener('input', () => {
+            selectedValue2.textContent = rangeInput2.value;
+        });
+        rangeInput3.addEventListener('input', () => {
+            selectedValue3.textContent = rangeInput3.value;
+        });
+        rangeInput4.addEventListener('input', () => {
+            selectedValue4.textContent = rangeInput4.value;
+        });
+    </script>
+
+    <script>
+        const rangeInput5 = document.getElementById('rangeInput5');
+        const selectedValue5 = document.getElementById('selectedValue5');
+
+        rangeInput5.addEventListener('input', () => {
+            selectedValue5.textContent = rangeInput5.value;
+        });
+    </script>
+
+    <script>
+        const rangeInput6 = document.getElementById('rangeInput6');
+        const rangeInput7 = document.getElementById('rangeInput7');
+        const selectedValue6 = document.getElementById('selectedValue6');
+        const selectedValue7 = document.getElementById('selectedValue7');
+
+        rangeInput6.addEventListener('input', () => {
+            selectedValue6.textContent = rangeInput6.value;
+        });
+        rangeInput7.addEventListener('input', () => {
+            selectedValue7.textContent = rangeInput7.value;
+        });
+    </script>
+
+
+
+
+
+
+    <p><br><br><br></p>
+        
+</body>

@@ -1,0 +1,79 @@
+﻿@{
+    ViewData["Title"] = "Page 2";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="~/Page2.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar2">
+            <ul>
+                <li> <h1 class="nomdusite"><strong>RFID WEBSITE</strong></h1></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="text-center">
+
+
+        <span class="animation-text"> <h2 class="display-4 animate__animated animate__bounceIn"><u>Méthode analytique</u></h2> </span>
+        
+
+        <p> <br><br></p>
+
+        <h2> <strong>Voici le résultat obtenu<br> à la suite de ce test</strong></h2>
+
+      
+
+        @{
+            string resultJson = ViewBag.Result?.ToString();
+            decimal accuracyF = 0;
+            if (!string.IsNullOrEmpty(resultJson))
+            {
+                dynamic resultObject = Newtonsoft.Json.JsonConvert.DeserializeObject(resultJson);
+                decimal.TryParse(resultObject.analytic.ToString(), out accuracyF);
+            }
+
+            string methoValue = ViewBag.Metho?.ToString();
+            string numericValue = System.Text.RegularExpressions.Regex.Replace(methoValue, "[^0-9.]", string.Empty);
+
+        }
+
+      <span class="animation-text">
+        <h3>Result: @Html.Raw(accuracyF)</h3> 
+      </span>
+
+        <p> <br><br><br> <br><br><br> </p>
+
+
+        <div class="btn2">
+
+        <form method="post" action="/SaveResults">
+            <input type="hidden" name="accuracyR" value="@Html.Raw(accuracyF)" />
+            <input type="hidden" name="idM" value="@Html.Raw(numericValue)" />
+            <input type="hidden" name="ListHParam[0].Id" value="12" />
+            <input type="hidden" name="ListHParam[0].Value" value="10" />
+            <input type="hidden" name="ListHParam[1].Id" value="5" />
+            <input type="hidden" name="ListHParam[1].Value" value="@Html.Raw(numericValue)" />
+
+            <input class="dropbtn" type="submit" name="envoi" value="Sauvegarder" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
+        </form>
+
+        
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+        
+        <input class="dropbtn" type="button" name="retour" value="Retour" onclick="window.location.href='@Url.Action("Index", "Home")'" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
+        
+
+      </div>
+
+   </div>
+
+
+
+</body>

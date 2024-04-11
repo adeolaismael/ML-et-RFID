@@ -1,0 +1,66 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    
+}
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="Pageindex.css">
+   
+    <script src="~/js/Site.js"></script>
+    
+</head>
+
+<body>
+    <header>
+
+        <nav class="navbar">
+            <ul>
+                <li> <h1 class="nomdusite"><strong>RFID WEBSITE </strong></h1> </li>
+               
+               
+                <li><a href="Home/Comparaison">Comparatif des résultats</a></li>
+                <li><a href="Methodes">Methodes</a></li>
+
+                <li><a href="Sauvegardes">Historique</a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <p> <br><br><br></p>
+
+    <div class="text-center">
+        <h1 class="display-4"><u>Welcome</u></h1>
+        <p> <br><br><br></p>
+
+        <h2> <strong>Veuillez appuyez sur le bouton de votre choix<br>pour procéder au test</strong></h2>
+        <p> <br><br><br> <br><br><br> <br><br> <br> </p>
+    
+
+       <div class="btn">
+
+
+        <form asp-action="Analytical" method="post">
+          <input class="dropbtn" type="submit" name="envoi" value="Méthode analytique" id="analytique" onclick="window.location.href='@Url.Action("Page2", "Home")'" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
+
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </form>
+
+         <input class="dropbtn" type="submit" name="envoi" value="Méthode predictive" id="predictive" onclick="afficher()" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
+
+           <div class="dropdown-content" id="myDropdown">
+            <a href="Home/Page3">RandomForestClassifier</a>
+            <a href="Home/Page4">Logistic Regression</a>
+            <a href="Home/Page5">SVM</a>
+                <a href="Home/Page6">K NEAREST-NEIGHBORS</a>
+           </div>
+
+        </div>
+
+        <p><br><br><br></p>
+  
+    </div>
+
+    <p><br><br><br></p>
+        
+</body>

@@ -1,0 +1,103 @@
+﻿/*body {
+    background-color: burlywood;
+    font-family: Arial, sans-serif;
+} */
+
+body {
+    background-image: url("css/Pic1.webp");
+    background-repeat: repeat-y;
+    background-size: 100%;
+}
+
+.nomdusite {
+    color: wheat;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+    height: 50px;
+}
+
+    .navbar ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .navbar li {
+        float: left;
+    }
+
+        .navbar li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+            .navbar li a:hover {
+                background-color: #111;
+            }
+.animation-text {
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+@keyframes color-change {
+    0% {
+        color: black;
+    }
+
+    100% {
+        color: #ff0000;
+    }
+}
+
+.animation-text {
+    animation: color-change 2s ease-in-out infinite;
+}
+
+.btn{
+    font-size: 2em;
+    background-color: beige;
+    padding: 10px 0; /* Ajuster la valeur du padding pour contrôler l'espace vertical */
+    display: flex; /* Utiliser flexbox pour aligner les éléments horizontalement */
+    justify-content: center; /* Centrer horizontalement les éléments */
+    margin-top: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: 0.5s;
+}
+
+    .btn:hover {
+        letter-spacing: 4px;
+        text-transform: capitalize;
+    }
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px; /* Ajouter une marge horizontale pour séparer les boutons */
+}

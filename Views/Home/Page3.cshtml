@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Page 3";
+}
+
+<head>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="~/Page3.css">
+    
+    <script src="~/JavaScript.js"></script>
+
+</head>
+
+<body>
+    <header>
+
+        <nav class="navbar3">
+            <ul>
+                <li> <h1 class="nomdusite"><strong>RFID WEBSITE</strong></h1></li>
+           
+
+            </ul>
+        </nav>
+
+    </header>
+  
+
+    <div class="text-center">
+        <span class="animation-text"> <h1 class="display-4"><u>Random Forest</u></h1> </span>
+        
+        <p> <br><br></p>
+
+        <h2> <strong>Veuillez choisir vos hyperparamétres</strong></h2>
+        <p> <br><br> </p>
+     
+        <form asp-action="RFClassifier" method="post">
+           
+            <label for="hyperparameter1"><strong> <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="-n_estimators : est le nombre d'arbres de décision dans la forêt aléatoire. Controle la complexité et sa performance.Plus on augmente plus temps de calcul long et risque de surapprentissage"> <span class="animation-text"> <h5>n_estimators</h5> </span> </span></strong> </label>
+            <input type="range" id="hyperparameter1" name="hyperparameter1" min="50" max="200" value="150">
+            <p id="rangeValue">50</p>
+            <p> <br> </p>
+            
+
+            <label for="hyperparameter2"> <strong><span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="max depth eest la profondeur maximale de chaque arbre de décision dans la forêt. Il contrôle la complexité de chaque arbre individuel dans la forêt. max_depth plus grand capture plus de relations complexes entre les variables d'entrée, mais augmente le risque de surapprentissage et réduit la capacité de généralisation"><span class="animation-text"> <h5>max_depth </h5> </span> </span> </strong> </label>
+            <input type="range" id="hyperparameter2" name="hyperparameter2" min="5" max="15" value="10">
+            <p id="rangeValue2">5</p>
+            <p><br></p>
+
+           
+            <p> <button type="submit" class="dropbtn"  onclick="window.location.href='@Url.Action("ResultMethode1", "Home")'">Valider</button>
+           
+
+        </form>
+
+       <div class="btn">
+
+           
+           
+            <div class="button-container">
+            <input class="dropbtn"  type="submit" name="envoi" value="Retour" onclick="window.location.href='@Url.Action("Index", "Home")'" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
+            </div>
+
+        </div>
+    </div>
+
+   <script>
+    $(document).ready(function () {
+    $('.info-tooltip').tooltip();
+    });
+   </script>
+       
+</body>

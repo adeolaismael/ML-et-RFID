@@ -1,0 +1,98 @@
+﻿@{
+    ViewData["Title"] = "Page 4";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="~/Page4.css">
+
+    
+    
+
+</head>
+
+
+<body>
+
+    <header>
+
+        <nav class="navbar4">
+            <ul>
+                <li>  <h1 class="nomdusite"><strong>RFID WEBSITE</strong></h1> </li>
+              
+
+            </ul>
+        </nav>
+
+    </header>
+
+    <div class="text-center">
+   <span class="animation-text"><h1 class="display-4"> <u>Logistic Regression</u></h1> </span>
+        <p> <br><br></p>
+
+        <h2> <strong>Veuillez choisir vos hyperparamétres</strong></h2>
+        <p> <br><br> </p>
+
+       
+        
+
+        <form asp-action="LRClassifier" method="post">
+
+            <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="il s'agit du terme de régularisation qui peut prendre les valeurs l1, l2, elasticnet ou none. La régularisation permet d'éviter le surapprentissage en ajoutant une pénalité sur les coefficients du modèle. La valeur par défaut est l2"> <span class="animation-text">  <h5>Penalty</h5> </span> </span>
+            <select name="selectedItem1">
+
+            <option value="l1" selected>l1</option>
+            <option value="l2">l2</option>
+            <option value="elasticnet">elasticnet</option>
+            <option value="none">none</option>
+
+          </select>
+
+            <p> <br><br> </p> 
+
+
+            <label for="hyperparameter1"> <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="inverse de la force de régularisation. Plus la valeur de C est faible, plus la régularisation est forte, et inversement. La valeur par défaut est 1.0"> <span class="animation-text"><h5>C</h5> </span> </span>  </label>
+             <p> <br> </p > 
+            <input type="range" id="rangeInput" name="hyperparameter1" min="0.01" max="10" step="0.01" value="10">
+            <p id="selectedValue">0.01</p>
+             <p> <br> </p>
+
+            <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="  il s'agit de l'algorithme de résolution utilisé pour optimiser les coefficients du modèle. Les choix courants sont newton- cg, lbfgs , liblinear , sag et saga . La valeur par défaut est lbfgs">
+                <span class="animation-text"> <h5>Solver</h5> </span> </span>
+            <select name="selectedItem2">
+                <option value="newton-cg">newton-cg</option>
+                <option value="lbfgs">lbfgs</option>
+                <option value="liblinear" selected>liblinear </option>
+                <option value="sag">sag</option>
+                <option value="saga">saga</option>
+            </select>
+
+            
+            <p> <br><br></p>
+            <p> <button type="submit" class="dropbtn" onclick="window.location.href='@Url.Action("ResultMethode2", "Home")'">Valider</button>
+        </form>
+
+
+       <div class="btn">
+           
+           <div class="button-container">
+           <input class="dropbtn" type="submit" name="envoi" value="Retour"  onclick="window.location.href='@Url.Action("Index", "Home")'" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
+          </div>
+        </div>
+
+       
+    </div>
+
+   <script>
+        const rangeInput = document.getElementById('rangeInput');
+        const selectedValue = document.getElementById('selectedValue');
+
+        rangeInput.addEventListener('input', () => {
+            selectedValue.textContent = rangeInput.value;
+        });
+
+        
+
+   </script>
+    
+</body>

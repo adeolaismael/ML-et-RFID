@@ -1,0 +1,88 @@
+﻿@model IEnumerable<PROJET.Models.Sauvegarde>
+
+@{
+    ViewData["Title"] = "Index";
+}<a href="c:\users\elitebook-pc\source\repos\projet\views\home\index.cshtml">c:\users\elitebook-pc\source\repos\projet\views\home\index.cshtml</a>
+
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="~/Indexsauvegarde.css">
+    
+
+    
+
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+                <li> <h1 class="nomdusite"><strong>RFID WEBSITE</strong></h1></li>
+               
+
+            </ul>
+        </nav>
+    </header>
+
+    <p> <br><br></p>
+
+  <div class="text-center">
+
+        <span class="animation-text">
+            <h1 class="display-4"><u>Historique</u></h1></span>
+
+    <p> </p>
+<p>
+            <!--<a asp-action="Create">Create New</a> -->
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Accuracy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Heure)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Accuracy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Heure)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdSauvegarde">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdSauvegarde">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdSauvegarde">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+    <p> <br><br><br></p>
+
+    <p> <br><br><br></p>
+
+    <p> <br><br><br></p>
+    <p> <br><br><br></p>
+
+    <p> <br><br><br></p>
+        </div>
+    <div class="btn">
+
+        
+        <input class="dropbtn" type="button" name="retour" value="Retour" onclick="window.location.href='@Url.Action("Index", "Home")'" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
+
+
+    </div>
+
+
+
+    </body>

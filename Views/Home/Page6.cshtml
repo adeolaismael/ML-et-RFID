@@ -1,0 +1,105 @@
+﻿@{
+    ViewData["Title"] = "Page 6";
+}
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="~/Page6.css">
+    
+
+
+</head>
+
+
+<body>
+    <header>
+        <nav class="navbar5">
+            <ul>
+                <li> <h1 class="nomdusite"><strong>RFID WEBSITE</strong></h1></li>
+               
+
+            </ul>
+        </nav>
+    </header> 
+
+    <div class="text-center">
+        <span class="animation-text">
+            <h1 class="display-4"><u>K NEAREST-NEIGHBORS</u></h1>
+        </span>
+
+        <p> <br><br></p>
+
+        <h2> <strong>Veuillez choisir vos hyperparamétres</strong></h2>
+        <p> <br><br> </p>
+
+       
+
+
+        <form asp-action="KNNClassifier" method="post">
+
+            <label for="hyperparameter1">  <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Le paramètre n_neighbors (nombre de voisins) dans l'algorithme des k plus proches voisins (KNN) est un paramètre qui spécifie le nombre de voisins les plus proches à considérer lors de la classification ou de la prédiction d'une nouvelle observation"><span class="animation-text"><h5>N_neighbors</h5></span>  </span> </label> <p> <br> </p>
+            <input type="range" id="rangeInput" name="hyperparameter1" min="1" max="10" value="5">
+            <p id="selectedValue">1</p>
+            <p> <br><br> </p>
+
+            <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="La métrique de distance détermine la méthode utilisée pour calculer la distance entre les points. Par défaut, la distance euclidienne (Euclidean distance) est utilisée, mais d'autres métriques telles que la distance de Manhattan (Manhattan 	distance), la distance de Minkowski (Minkowski distance) ou la distance de Hamming (Hamming distance) peuvent être spécifiées en fonction de la nature des données">
+                <span class="animation-text"><h5>Metric</h5> </span>
+            </span>
+            <select name="selectedItem1">
+                <option value="euclidean">euclidean</option>
+                <option value="manhattan" selected>manhattan</option>
+                <option value="chebyshev">chebyshev</option>
+               
+            </select>
+            <p> <br><br> </p>
+
+            <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Ce paramètre détermine comment les voisins contribuent à la prise de décision. Deux options courantes 	sont disponibles :'uniform' : Tous les voisins ont le même poids dans la décision.'distance' : Les poids des voisins sont inversément proportionnels à leur distance. Les voisins plus proches ont un poids plus élevé">
+                    <span class="animation-text"><h5>Weights</h5> </span>
+                </span>
+            <select name="selectedItem2">
+                <option value="uniform">uniform</option>
+                <option value="distance" selected>distance</option>
+               
+            </select>
+            <p> <br><br> </p>
+
+            <span class="info-tooltip" data-toggle="tooltip" data-placement="top" title="Ce paramètre détermine la stratégie utilisée pour le vote en cas d'égalité lors de la classification. Deux options courantes sont disponibles :
+	'auto' : L'algorithme choisit automatiquement la stratégie de vote en fonction du type de problème.
+	'brute' : Effectue une recherche exhaustive parmi tous les voisins les plus proches.
+	'kd_tree' : Utilise un arbre KD (KD-tree) pour accélérer la recherche des voisins.
+	'ball_tree' : Utilise un arbre de sphères (ball tree) pour accélérer la recherche des voisins ">
+                        <span class="animation-text"><h5>Algorithm</h5> </span>
+                    </span>
+            <select name="selectedItem3">
+                <option value="auto" selected>auto</option>
+                <option value="brute">brute</option>
+                <option value="kd_tree">kd_tree</option>
+                <option value="ball_tree">ball_tree</option>
+            </select>
+            <p> <br><br></p>
+
+            <p> <button type="submit" class="dropbtn" onclick="window.location.href='@Url.Action("ResultMethode4", "Home")'">Valider</button>
+        </form>
+
+
+      <div class="btn">
+            
+           
+        <div class="button-container">
+           <input class="dropbtn" type="submit" name="envoi" value="Retour"  onclick="window.location.href='@Url.Action("Index", "Home")'" style="width: 250px; height: 50px; font-size: 24px; padding: 10px;">
+        </div>
+       </div>
+
+        <p><br></p>
+    </div>
+
+    <script>
+        const rangeInput = document.getElementById('rangeInput');
+        const selectedValue = document.getElementById('selectedValue');
+
+        rangeInput.addEventListener('input', () => {
+            selectedValue.textContent = rangeInput.value;
+        });
+    </script>
+        
+</body>

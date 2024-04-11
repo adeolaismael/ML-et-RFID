@@ -1,0 +1,113 @@
+﻿body {
+    background-color: burlywood;
+    font-family: Arial, sans-serif;
+}
+
+.nomdusite {
+    color: wheat;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+    height: 50px;
+}
+
+    .navbar ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .navbar li {
+        float: left;
+    }
+
+   .navbar li a {
+       display: block;
+       color: white;
+       text-align: center;
+       padding: 14px 16px;
+       text-decoration: none;
+       margin-left: 10px;
+       margin-right: 10px;
+        }
+
+  .navbar li a:hover {
+     background-color: #111;
+  }
+
+
+
+/* Style pour la liste déroulante */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    right: 0
+}
+
+    /* Style pour les options de la liste déroulante */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        margin-top: 40px;
+        margin-bottom: 4px;
+       
+    }
+
+
+
+/* Style pour les options de la liste déroulante lorsqu'on passe la souris dessus */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Style pour afficher la liste déroulante */
+.show {
+    display: block;
+}
+
+
+.btn {
+    font-size: 2em;
+    background-color: beige;
+    padding: 10px 0; /* Ajuster la valeur du padding pour contrôler l'espace vertical */
+    display: flex; /* Utiliser flexbox pour aligner les éléments horizontalement */
+    justify-content: center; /* Centrer horizontalement les éléments */
+    margin-top: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: 0.5s;
+}
+
+    .btn:hover {
+        letter-spacing: 4px;
+        text-transform: capitalize;
+    }
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+     margin: 0 5px; /* Ajouter une marge horizontale pour séparer les boutons */
+}
+

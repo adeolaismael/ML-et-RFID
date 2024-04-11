@@ -1,0 +1,89 @@
+﻿body {
+    background-image: url("css/img12.webp");
+    background-repeat:repeat-y;
+    background-size: 100%;
+}
+
+.nomdusite {
+    color: burlywood;
+}
+
+* {
+    margin: 0;
+    padding: 10;
+    box-sizing: border-box;
+}
+
+.navbar4 {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    overflow: hidden;
+    left: 0;
+    right: 0;
+    height: 50px;
+}
+
+    .navbar4 ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .navbar4 li {
+        float: left;
+    }
+
+        .navbar4 li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+
+            .navbar4 li a:hover {
+                background-color: #111;
+            }
+
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px; /* Ajouter une marge horizontale pour séparer les boutons */
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.animation-text {
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+@keyframes color-change {
+    0% {
+        color: black;
+    }
+
+    100% {
+        color: #ff0000;
+    }
+}
+
+.animation-text {
+    animation: color-change 2s ease-in-out infinite;
+}
+
+
+
